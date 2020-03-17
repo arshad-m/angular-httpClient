@@ -1,0 +1,22 @@
+<p>httpclient-demo works!</p>
+<div>
+    <h4>users list</h4>
+    <ul *ngFor="let user of userData_async | async">
+        <li> {{user.name}}</li>
+    </ul>
+</div>
+<div>
+    <h4>Product list </h4>
+    <form #productForm="ngForm" (ngSubmit)="addProduct()" >
+        <input type="text" name="name" [(ngModel)]="product.name" value="" placeholder="Product Name">
+        <input type="text" name="description" [(ngModel)]="product.description" value="" placeholder="Description">
+        <input type="number" name="price" [(ngModel)]="product.price" value="" placeholder="Price">
+        <input type="number" name="quantity" [(ngModel)]="product.quantity" value="" placeholder="Quantity">
+        <button type="submit"> Add Product</button>
+    </form>
+    <ul *ngFor="let product of productData">
+        <li> {{product.name}}</li>
+        <button (click)="updateProduct(product, product.id)"> Update </button>
+        <button (click)="deleteProduct(product.id)"> Delete </button>
+    </ul>
+</div>
